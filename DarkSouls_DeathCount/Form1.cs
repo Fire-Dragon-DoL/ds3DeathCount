@@ -10,11 +10,22 @@ namespace DarkSouls_DeathCount
     {
         private int language = 0;
         private DeathCounter DeathCounter { set; get; }
+        private string fileTarget = "";
 
         private bool end = false;
         public Form1()
         {
             InitializeComponent();
+            var configPath = AppDomain.CurrentDomain.BaseDirectory;
+            configPath = System.IO.Path.Combine(configPath, "ds3DeathCount.conf");
+            var fileTarget = System.IO.File.ReadAllText(configPath);
+            this.fileTarget = fileTarget.Trim();
+            MessageBox.Show(this.fileTarget);
+            using (var file = new System.IO.StreamWriter(this.fileTarget))
+            {
+                file.Write(this.lblDeaths.Text);
+            }
+
             try
             {
                 DeathCounter = new DeathCounter();
@@ -62,11 +73,23 @@ namespace DarkSouls_DeathCount
                 {
                     if (this.lblDeaths.InvokeRequired)
                     {
-                        this.lblDeaths.BeginInvoke((MethodInvoker)delegate () { this.lblDeaths.Text = DeathCounter.GetDeaths().ToString(); });
+                        this.lblDeaths.BeginInvoke((MethodInvoker)delegate () {
+                            this.lblDeaths.Text = DeathCounter.GetDeaths().ToString();
+
+                            using (var file = new System.IO.StreamWriter(this.fileTarget))
+                            {
+                                file.Write(this.lblDeaths.Text);
+                            }
+                        });
                     }
                     else
                     {
                         this.lblDeaths.Text = DeathCounter.GetDeaths().ToString();
+
+                        using (var file = new System.IO.StreamWriter(this.fileTarget))
+                        {
+                            file.Write(this.lblDeaths.Text);
+                        }
                     }
                 }
             }
