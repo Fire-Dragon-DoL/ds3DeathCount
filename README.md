@@ -2,6 +2,10 @@
 
 Forked version of the original ds3DeathCount with support for file-writing deaths.
 
+## Requirements
+
+- .NET Framework 4.5(.2)
+
 ## Usage
 
 1. Download the [latest version](https://github.com/Fire-Dragon-DoL/ds3DeathCount/releases/download/v0.1.0/ds3DeathCount.zip)
