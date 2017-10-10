@@ -4,13 +4,13 @@ Forked version of the original ds3DeathCount with support for file-writing death
 
 ## Requirements
 
-- .NET Framework 4.5(.2)
+- [.NET Framework 4.5.2](https://www.microsoft.com/en-ca/download/details.aspx?id=42643)
 
 ## Usage
 
 1. Download the [latest version](https://github.com/Fire-Dragon-DoL/ds3DeathCount/releases/download/v0.1.0/ds3DeathCount.zip)
 2. Unzip it
-3. Create a new file named `ds3DeathCount.conf` in the same place where `DarkSouls_DeathCount.exe` is found
+3. Create a new file named `ds3DeathCount.conf` (it **must be this name**) in the same place where `DarkSouls_DeathCount.exe` is found
 4. Decide a path where you want your "deaths" to be written on. For example, I want my deaths to be written in a "deaths.txt" file on my desktop. Take note of this path, for example I chose `C:\Fire\Desktop\mydeaths.txt`
 5. Inside `ds3DeathCount.conf`, write the path chosen in the previous step
 6. Save and close the file
